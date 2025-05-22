@@ -81,39 +81,41 @@ const TODOList = () => {
   };
 
   return (
-    <ol className="text-white overflow-auto max-h-64 px-2 sm:px-4">
-      {todos.length > 0 ? (
-        todos.map((item) => (
-          <li
-            key={item.id}
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 border border-amber-300 w-full sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] mb-3 justify-between items-start sm:items-center p-4 rounded-md mx-auto"
-          >
-            <div className="flex items-center gap-3 w-full sm:w-auto">
-              <input
-                type="checkbox"
-                checked={item.completed}
-                onChange={() => handleDone(item.id)}
-                className="w-5 h-5 appearance-none bg-white border border-gray-300 rounded-full checked:bg-green-500 checked:border-transparent focus:outline-none cursor-pointer"
-              />
-              <p className={`break-words ${item.completed ? "line-through text-gray-400" : ""}`}>
-                {item.title}
-              </p>
-            </div>
+    <div className="w-full max-w-3xl mx-auto px-4">
+      <ol className="text-white max-h-80 overflow-auto space-y-4">
+        {todos.length > 0 ? (
+          todos.map((item) => (
+            <li
+              key={item.id}
+              className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-5 bg-[#1c1c1c] border border-amber-300 rounded-md p-4"
+            >
+              <div className="flex items-center gap-3 w-full sm:w-auto">
+                <input
+                  type="checkbox"
+                  checked={item.completed}
+                  onChange={() => handleDone(item.id)}
+                  className="w-5 h-5 appearance-none bg-white border border-gray-300 rounded-full checked:bg-green-500 checked:border-transparent focus:outline-none cursor-pointer"
+                />
+                <p className={`break-words ${item.completed ? "line-through text-gray-400" : ""}`}>
+                  {item.title}
+                </p>
+              </div>
 
-            <div className="flex text-2xl gap-3 self-end sm:self-auto">
-              <button onClick={() => handleClick("edit", item.id)}>
-                <MdModeEdit className="cursor-pointer hover:text-yellow-400" />
-              </button>
-              <button onClick={() => handleClick("delete", item.id)}>
-                <MdOutlineDelete className="cursor-pointer hover:text-red-500" />
-              </button>
-            </div>
-          </li>
-        ))
-      ) : (
-        <p className="text-lg text-center">Seems lonely in here, what are you up to?</p>
-      )}
-    </ol>
+              <div className="flex text-2xl gap-3 self-end sm:self-auto">
+                <button onClick={() => handleClick("edit", item.id)}>
+                  <MdModeEdit className="cursor-pointer hover:text-yellow-400" />
+                </button>
+                <button onClick={() => handleClick("delete", item.id)}>
+                  <MdOutlineDelete className="cursor-pointer hover:text-red-500" />
+                </button>
+              </div>
+            </li>
+          ))
+        ) : (
+          <p className="text-lg text-center">Seems lonely in here, what are you up to?</p>
+        )}
+      </ol>
+    </div>
   );
 };
 

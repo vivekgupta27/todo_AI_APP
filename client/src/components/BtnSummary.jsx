@@ -5,7 +5,8 @@ import { useContext } from 'react';
 import { TodoContext } from '../context/TodoContext';
 
 const BtnSummary = () => {
-      const{BASE_URL}=useContext(TodoContext)
+  const { BASE_URL } = useContext(TodoContext);
+
   const handleClick = async () => {
     try {
       const response = await axios.post(`${BASE_URL}/summarize`, {});
@@ -22,7 +23,7 @@ const BtnSummary = () => {
   return (
     <button
       onClick={handleClick}
-      className='hover:bg-purple-600 duration-300 ease-in-out text-white cursor-pointer py-3 flex justify-center items-center rounded-lg px-2 text-lg font-semibold border-1 border-amber-300'
+      className='w-full sm:w-auto hover:bg-purple-600 duration-300 ease-in-out text-white cursor-pointer py-2 sm:py-3 px-4 sm:px-6 flex justify-center items-center rounded-lg text-base sm:text-lg font-semibold border border-amber-300'
     >
       Get Summary
     </button>

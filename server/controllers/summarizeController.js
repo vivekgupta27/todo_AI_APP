@@ -9,7 +9,7 @@ const summarize = async (req, res) => {
     return `${index + 1}. ${todo.title} - ${todo.completed ? 'Completed' : 'Pending'}`;
   }).join('\n');
 
-  const prompt = `I have the following todo list:\n${formattedTodos}\n\nPlease summarize this list. How many tasks are done, how many are pending, and provide a short overall summary and it should be in plaintext and motivating quotes also.`;
+  const prompt = `I have the following todo list:\n${formattedTodos}\n\nPlease summarize this list. How many tasks are done, how many are pending, and provide a detail overall summary and it should be in plaintext and also add motivating quotes and structure it well so that it looks good on screen make each separate section on a new line.`;
 
   try {
     const response = await ai.models.generateContent({
